@@ -60,9 +60,11 @@ function HomePage() {
           <button className="py-[12px] px-[20px] h-[50px] w-[328px] bg-home rounded-[8px] text-white">
             Learn More
           </button>
-          <button className="py-[12px] px-[20px] h-[50px] w-[328px] text-home rounded-[8px] font-bold border-[1px] border-home">
-            Connect with your civic link
-          </button>
+          <Link to="connect-to-wallet">
+            <button className="py-[12px] px-[20px] h-[50px] w-[328px] text-home rounded-[8px] font-bold border-[1px] border-home cursor-pointer">
+              Connect with your civic link
+            </button>
+          </Link>
         </div>
       </section>
 

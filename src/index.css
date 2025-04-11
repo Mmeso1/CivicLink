@@ -11,3 +11,7 @@
   --color-red: rgba(245, 101, 101, 1);
   --color-gray: rgba(10, 9, 9, 0.5);
 }
+
+.open-sans {
+  font-family: var(--font-display);
+}
