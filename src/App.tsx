@@ -3,7 +3,7 @@ import HomePage from "./pages/homePage";
 import ConnectToWallet from "./pages/connectToWallet";
 import NftIssuance from "./pages/nftIssuance";
 import CivicIdMint from "./pages/civicMint";
-import { DiscoverWalletProviders } from "./components/DiscoverWalletProviders";
+import ConnectWithMetaMask from "./pages/connectWithMetaMask";
 
 function App() {
   return (
@@ -14,6 +14,10 @@ function App() {
         <Route path="/nftIssuance" element={<NftIssuance />} />
         <Route path="/civic-id-mint" element={<CivicIdMint />} />
         <Route path="/connect-to-wallet" element={<ConnectToWallet />} />
+        <Route
+          path="/connect-with-metamask"
+          element={<ConnectWithMetaMask />}
+        />
       </Routes>
     </>
   );

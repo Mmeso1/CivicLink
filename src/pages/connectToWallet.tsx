@@ -1,7 +1,10 @@
 import NavBar from "../components/NavBar";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import WalletModal from "../components/WalletModal";
 
 const ConnectToWallet = () => {
+  const [walletModalOpen, setWalletModalOpen] = useState(false);
+
   return (
     <>
       <NavBar />
@@ -17,12 +20,21 @@ const ConnectToWallet = () => {
             </p>
           </div>
           <div>
-            <button className="py-[12px] px-[20px] h-[60px] w-[700px] rounded bg-[#005C37] text-white font-light open-sans cursor-pointer">
+            <button
+              className="py-[12px] px-[20px] h-[60px] w-[700px] rounded bg-[#005C37] text-white font-light open-sans cursor-pointer"
+              onClick={() => setWalletModalOpen(true)}
+            >
               Connect your Wallet
             </button>
           </div>
         </div>
       </section>
+
+      {/* Modal Component */}
+      <WalletModal
+        isOpen={walletModalOpen}
+        onClose={() => setWalletModalOpen(false)}
+      />
     </>
   );
 };
