@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
+import NftIssuance from "./pages/nftIssuance";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/nftIssuance" element={<NftIssuance />} />
         </Routes>
       </BrowserRouter>
     </>
