@@ -60,59 +60,20 @@ function HomePage() {
           <button className="py-[12px] px-[20px] h-[50px] w-[328px] bg-home rounded-[8px] text-white">
             Learn More
           </button>
+          <button className="py-[12px] px-[20px] h-[50px] w-[328px] text-home rounded-[8px] font-bold border-[1px] border-home">
+            Connect with your civic link
+          </button>
         </div>
       </section>
 
-      <section className="h-[608px] flex items-center justify-center ">
-        <div className="flex w-full flex-col md:flex-row px-4 md:px-0 md:w-[80%] mx-auto gap-x-3 justify-between items-center">
-          <aside className="font-bold text-[2.5rem]">
-            Explore Government <br /> Structure
-          </aside>
-          <aside className="md:w-2/4 w-full mb-10 md:mb-0">
-            <ul className="flex flex-col gap-[20px]">
-              <li className="flex items-center border-b-1 border-b-gray-300 py-4">
-                <p className="flex py-3 px-4 bg-gray-100 rounded-full items-center justify-center">
-                  👤
-                </p>
-                <p className="ml-4">Submit a Complaint</p>
-              </li>
-              <li className="flex items-center border-b-1 border-b-gray-300 py-4">
-                <p className="flex py-3 px-4 bg-gray-200 rounded-full items-center justify-center">
-                  🔍
-                </p>
-                <p className="ml-4">For Government Officials</p>
-              </li>
-              <li className="flex items-center border-b-1 border-b-gray-300 py-4">
-                <p className="flex py-3 px-4 bg-gray-200 rounded-full items-center justify-center">
-                  🏛️
-                </p>
-                <p className="ml-4">For Civil Society & Media</p>
-              </li>
-              <li className="flex items-center border-b-1 border-b-gray-300 py-4">
-                <p className="flex py-3 px-4 bg-gray-200 rounded-full items-center justify-center">
-                  📰
-                </p>
-                <p className="ml-4">Submit a Complaint</p>
-              </li>
-              <li className="flex items-center border-b-1 border-b-gray-300 py-4">
-                <p className="flex py-3 px-4 bg-gray-200 rounded-full items-center justify-center">
-                  ⛎
-                </p>
-                <p className="ml-4">Categories of Services</p>
-              </li>
-            </ul>
-          </aside>
-        </div>
-      </section>
-
-      <section className="h-[220px] flex bg-home text-white ">
+      <section className="h-[220px] mt-20 flex bg-home text-white ">
         <div className="mx-auto w-[76%] flex items-center">
           <img
             className="w-[100px] h-[100px]"
             src="/image.png"
             alt="An image of the Nigerian Flag"
           />
-          <div className="ml-10 ">
+          <div className="ml-10 md:text-base text-[0.8rem]">
             <p className="">Government of Nigeria</p>
             <p className="mt-3">Empowering citizens through CivicLink</p>
           </div>
