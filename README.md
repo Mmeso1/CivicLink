@@ -1,54 +1,45 @@
-# React + TypeScript + Vite
+# Civic Link
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Civic Link** is a decentralized civic engagement platform that empowers Nigerian citizens to directly connect with their government officials using Web3 technology. Built to foster transparency, accountability, and meaningful communication, Civic Link bridges the gap between the governed and the government.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌍 Overview
 
-## Expanding the ESLint configuration
+Civic Link leverages blockchain tools to ensure secure, verifiable, and censorship-resistant communication between Nigerian citizens and their elected representatives.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ✨ Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 🔐 **Web3 Integration**: Authenticate users with their crypto wallets (MetaMask).
+- 📬 **Direct Communication**: Send messages or petitions directly to government officials.
+- 📢 **Public Threads**: Participate in open conversations or debates on civic issues.
+- 📄 **Document Signing**: Sign and submit verifiable digital documents.
+- 📊 **Engagement Analytics**: View stats on message delivery, responses, and community support.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## 🛠️ Tech Stack
+
+- **Frontend**: React
+- **Styling**: Tailwind
+- **Web3**: Ethers.js
+- **Backend**: Smart Contracts
+- **Blockchain**: Ethereum
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or later)
+- A crypto wallet (e.g., MetaMask)
+
+### Installation
+
+```bash
+git clone https://github.com/Mmeso1/CivicLink.git
+npm install
 ```
