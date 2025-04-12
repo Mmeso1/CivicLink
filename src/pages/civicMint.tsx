@@ -190,7 +190,7 @@ function CivicIdMint() {
       </section>
 
       <section className="lg:w-[90%] w-full px-6 mx-auto">
-        <img src="/public/family.png" alt="an image of a nuclear family" />
+        <img src="/family.png" alt="an image of a nuclear family" />
       </section>
     </>
   );

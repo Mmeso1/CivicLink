@@ -1,12 +1,73 @@
 import { Link, Outlet } from "react-router-dom";
 import { FaBars, FaUserCircle } from "react-icons/fa";
 import userStore from "../store/userStore";
+import { useState } from "react";
 
 const MintLayout = () => {
   const { isMinted } = userStore();
 
+  const [toggle, setToggle] = useState(false);
+
+  const handleToggle = () => {
+    setToggle((prevState) => !prevState);
+  };
+
   return (
     <section className="flex flex-col lg:flex-row font-[Open Sans]">
+      {toggle && (
+        // Small screen menu
+        <div className="w-[370px] font-[Open Sans] md:hidden bg-home text-white absolute h-[900px] rounded-br-3xl z-50">
+          <p
+            onClick={handleToggle}
+            className=" cursor-pointer text-5xl absolute top-5 right-5"
+          >
+            X
+          </p>
+          <ul className="flex flex-col items-center text-2xl gap-[60px]">
+            <li className="mt-10">
+              <h1 className="text-[2rem]">
+                <span className="text-green-300">Civic</span>Link
+              </h1>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Account
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                My Civic Identity
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Activity
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Settings
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Volunteer
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Help Center
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
+
       <aside className="w-[15%] hidden lg:block overflow-hidden bg-home min-h-screen">
         <div className=" flex flex-col ml-8 text-white">
           <h1 className="text-[1.8rem] font-[700] mt-10">
@@ -14,21 +75,35 @@ const MintLayout = () => {
           </h1>
           {/* Update this once the Mint ID page has been made functional */}
           <li className="list-none text-[0.8rem] mt-10">
-            <Link to={isMinted ? "/nftIssuance" : "/dashboard/home"}>
+            <Link
+              className="hover:cursor-pointer hover:text-gray-500"
+              to={isMinted ? "/nftIssuance" : "/dashboard/home"}
+            >
               Account
             </Link>
           </li>
           <li className="list-none text-[0.8rem] mt-10">
-            <Link to="/dashboard/home">Dashboard</Link>
+            <Link
+              className="hover:cursor-pointer hover:text-gray-500"
+              to="/dashboard/home"
+            >
+              Dashboard
+            </Link>
           </li>
           <li className="list-none text-[0.8rem] mt-10">
-            <Link to="#">My Civic Identity</Link>
+            <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+              My Civic Identity
+            </Link>
           </li>
           <li className="list-none text-[0.8rem] mt-10">
-            <Link to="#">Activity</Link>
+            <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+              Activity
+            </Link>
           </li>
           <li className="list-none text-[0.8rem] mt-10">
-            <Link to="#">Settings</Link>
+            <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+              Settings
+            </Link>
           </li>
         </div>
       </aside>
@@ -52,12 +127,14 @@ const MintLayout = () => {
             </nav>
           </div>
           <div className="lg:hidden text-4xl absolute right-10">
-            <FaBars />
+            <FaBars onClick={handleToggle} />
           </div>
         </header>
 
         {/* Outlet */}
-        <Outlet />
+        <div className="min-h-[80vh]">
+          <Outlet />
+        </div>
         {/* ---- */}
 
         <div className="border-t border-gray-300 mt-20"></div>

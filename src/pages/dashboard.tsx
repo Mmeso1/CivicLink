@@ -26,8 +26,10 @@ const Dashboard = () => {
         </Link> */}
       </section>
       <div className="mt-28">
-        <section className="flex flex-col items-center justify-center mt-10 mb-14">
-          <p className="text-4xl font-bold">Other Recommended Services</p>
+        <section className="flex flex-col  items-center justify-center mt-10 mb-14">
+          <p className="text-4xl font-bold text-center">
+            Other Recommended Services
+          </p>
           <p className="font-light text-sm my-4">
             Discover exclusive offers tailored for Civic ID holders.
           </p>
@@ -35,7 +37,7 @@ const Dashboard = () => {
             Explore Offers
           </button>
         </section>
-        <section className="recommendations flex items-center gap-5 ml-14">
+        <section className="recommendations flex md:flex-row flex-col w-[80%] justify-evenly mx-auto items-center gap-5 ml-14">
           <div className="w-[450px] bg-white rounded-md hover:shadow-md overflow-hidden cursor-pointer">
             <img src={book} alt="books" className="w-full h-auto" />
 
@@ -51,7 +53,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="w-[450px] bg-white rounded-md hover:shadow-md overflow-hidden cursor-pointer">
+          <div className="w-[450px] mt-5 md:mt-0 bg-white rounded-md hover:shadow-md overflow-hidden cursor-pointer">
             <img src={pots} alt="books" className="w-full h-auto" />
 
             <div className="border border-gray-300 rounded-bl-md rounded-br-md p-4 flex flex-col gap-2 open-sans">

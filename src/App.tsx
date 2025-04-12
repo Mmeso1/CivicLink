@@ -20,8 +20,8 @@ function App() {
           element={<ConnectWithMetaMask />}
         />
         <Route path="/dashboard" element={<MintLayout />}>
+          <Route index element={<Dashboard />} />
           <Route path="civic-id-mint" element={<CivicIdMint />} />
-          <Route path="home" element={<Dashboard />} />
         </Route>
       </Routes>
     </>
