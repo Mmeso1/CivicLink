@@ -125,7 +125,7 @@ function HomePage() {
           <div className="flex items-center">
             <img
               className="rounded-full mr-3"
-              src="/public/user image.png"
+              src="/user image.png"
               alt="Image of the user"
             />
             <p className="text-3xl">
