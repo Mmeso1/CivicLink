@@ -113,7 +113,11 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
                 onClick={() => handleConnect(provider)}
                 className="flex items-center justify-center gap-4 w-3/4 p-2 mb-2 bg-[#EADFDF] rounded-lg shadow-md hover:bg-gray-200 border border-black cursor-pointer"
               >
-                <img src={provider.info.icon} alt={provider.info.name} />
+                <img
+                  className="w-8 h-8"
+                  src={provider.info.icon}
+                  alt={provider.info.name}
+                />
                 <div>{provider.info.name}</div>
               </button>
             ))

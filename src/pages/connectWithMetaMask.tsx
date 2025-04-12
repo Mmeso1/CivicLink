@@ -66,7 +66,7 @@ const ConnectWithMetaMask = () => {
           <p className="mt-6 mb-16 text-gray-700">You're in! 🎉</p>
           <button
             className="bg-[#005C37] text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer"
-            onClick={() => navigate("/dashboard/home")}
+            onClick={() => navigate("/dashboard/")}
           >
             Continue to Dashboard
           </button>

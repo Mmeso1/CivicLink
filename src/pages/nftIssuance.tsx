@@ -166,14 +166,28 @@ function NftIssuance() {
           <p className="md:w-1/2 w-full font-bold  text-[2rem]">More Actions</p>
           <div className="md:w-1/2 w-full mt-5 md:mt-0 min-h-[148px] flex flex-col gap-[40px] ">
             <div>
-              <p>View on Blockchain Explorer</p>
+              <p>Enter Transaction Hash</p>
               <input
                 className="border-[1px] mt-2 border-gray-300 w-full px-4 py-2 rounded-[6px]"
                 type="text"
                 placeholder="Enter token id"
+                onClick={() => {
+                  const transactionHashInput = document.getElementById(
+                    "transactionHashInput"
+                  ) as HTMLInputElement | null; // Explicitly type the element
+                  if (transactionHashInput && transactionHashInput.value) {
+                    const transactionHash = transactionHashInput.value;
+                    window.open(
+                      `https://sepolia.basecan.org/tx/${transactionHash}`,
+                      "_blank"
+                    );
+                  } else {
+                    alert("Please enter a transaction hash.");
+                  }
+                }}
               />
             </div>
-            <button className="bg-home  flex items-center justify-center py-[12px] w-[240px] text-white rounded-[6px]">
+            <button className="bg-home  flex items-center justify-center py-[12px] w-[240px] text-white rounded-[6px] cursor-pointer">
               Submit{" "}
             </button>
           </div>
