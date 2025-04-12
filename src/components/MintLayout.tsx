@@ -1,8 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
-import mintID from "../assets/images/mintID.svg";
+import { FaBars, FaUserCircle } from "react-icons/fa";
+import userStore from "../store/userStore";
 
 const MintLayout = () => {
+  const { isMinted } = userStore();
+
   return (
     <section className="flex flex-col lg:flex-row font-[Open Sans]">
       <aside className="w-[15%] hidden lg:block overflow-hidden bg-home min-h-screen">
@@ -12,7 +14,9 @@ const MintLayout = () => {
           </h1>
           {/* Update this once the Mint ID page has been made functional */}
           <li className="list-none text-[0.8rem] mt-10">
-            <Link to="/dashboard/home">Account</Link>
+            <Link to={isMinted ? "/nftIssuance" : "/dashboard/home"}>
+              Account
+            </Link>
           </li>
           <li className="list-none text-[0.8rem] mt-10">
             <Link to="/dashboard/home">Dashboard</Link>
@@ -32,7 +36,7 @@ const MintLayout = () => {
         <header className="h-[80px] flex items-center justify-center border-b-[1px] border-gray-300">
           <div className="w-[90%]  flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <img src={mintID} alt="mint pfp" />
+              <FaUserCircle className="text-4xl text-gray-500" />
               <h1 className="text-2xl font-bold">Civic Mint ID</h1>
             </div>
 

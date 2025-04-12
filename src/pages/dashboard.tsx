@@ -3,17 +3,27 @@ import pots from "../assets/images/Pots.svg";
 import star from "../assets/images/star.png";
 import card from "../assets/images/wallet.png";
 import { Link } from "react-router-dom";
+import userStore from "../store/userStore";
 
 const Dashboard = () => {
+  const { isMinted } = userStore();
+
   return (
     <div className="open-sans ">
       <section className="flex flex-col items-center justify-center mt-10 gap-10">
         <p className="text-4xl font-bold">Let’s Create Your Civic ID</p>
-        <Link to="/dashboard/civic-id-mint">
+        <Link
+          to={isMinted ? "/dashboard/nftIssuancee" : "/dashboard/civic-id-mint"}
+        >
           <button className="px-4 py-2 text-white bg-[#003D25] rounded-md w-36 cursor-pointer">
-            Mint Civic ID
+            {isMinted ? "View Account" : "Mint Civic ID"}
           </button>
         </Link>
+        {/* <Link to="/dashboard/civic-id-mint">
+          <button className="px-4 py-2 text-white bg-[#003D25] rounded-md w-36 cursor-pointer">
+            "Mint Civic ID"
+          </button>
+        </Link> */}
       </section>
       <div className="mt-28">
         <section className="flex flex-col items-center justify-center mt-10 mb-14">

@@ -50,16 +50,20 @@ function CivicIdMint() {
 
       const generatedId = generateUserId();
 
+      // Access the nested data object
+      const mintData = response.data.data;
+
       user.handleMintingSuccess({
         id: generatedId,
-        name: formData.fullName,
-        role: formData.role,
-        recipient: response.data.recipient,
-        issueDate: response.data.issueDate,
-        transactionHash: response.data.transactionHash,
+        name: mintData.name,
+        role: mintData.role,
+        recipient: mintData.receipient, // Note: Ensure the spelling matches the API response
+        issueDate: mintData.issueDate,
+        transactionHash: mintData.transactionHash,
       });
 
-      // console.log(response.data);
+      console.log("Minting successful:", response.data);
+      console.log("Issue Date:", mintData.issueDate); // Correctly log the issue date
       navigate("/nftIssuance");
     } catch (error) {
       console.error("Error minting Civic ID:", error);

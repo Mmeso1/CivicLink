@@ -10,6 +10,7 @@ type userStoreType = {
   transactionHash: string;
   isMinted: boolean;
   isConnected: boolean;
+  walletAddress: string;
   setMintingDetails: (name: string, role: string) => void;
   handleMintingSuccess: (data: {
     id: string;
@@ -34,6 +35,7 @@ const userStore = create<userStoreType>()(
       transactionHash: "",
       isMinted: false,
       isConnected: false,
+      walletAddress: "",
 
       setMintingDetails: (name, role) => set(() => ({ name, role })),
 
@@ -46,6 +48,7 @@ const userStore = create<userStoreType>()(
           issueDate: data.issueDate,
           transactionHash: data.transactionHash,
           isMinted: true,
+          walletAddress: data.recipient,
         })),
 
       isConnectedWallet: (status) => set(() => ({ isConnected: status })),
@@ -60,6 +63,7 @@ const userStore = create<userStoreType>()(
           transactionHash: "",
           isMinted: false,
           isConnected: false,
+          walletAddress: "",
         })),
     }),
     {

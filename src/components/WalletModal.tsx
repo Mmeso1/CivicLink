@@ -72,6 +72,8 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
     return () => clearTimeout(searchTimeout);
   }, [providers, isOpen]);
 
+  console.log(selectedWallet);
+
   if (!isOpen) return null;
 
   return (

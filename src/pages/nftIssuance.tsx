@@ -1,4 +1,10 @@
+import userStore from "../store/userStore";
+import { Link } from "react-router-dom";
+import pfp from "../assets/images/placeholder.png";
+
 function NftIssuance() {
+  const user = userStore();
+
   return (
     <section className="font-[Roboto]">
       <header className="h-[80px] container mx-auto flex items-center ">
@@ -8,25 +14,29 @@ function NftIssuance() {
 
       <section className="bg-home text-white h-[218px] flex flex-col items-center gap-[60px] justify-center">
         <div className="h-[96px] flex flex-col gap-[24px]">
-          <p className=" font-bold text-[2rem]">Civic ID #1234</p>
+          <p className=" font-bold text-[2rem]">Civic ID: #{user.id}</p>
           <p>Details of your newly issued NFT</p>
         </div>
       </section>
 
       <section className="min-h-[720px] w-[90%] mx-auto md:mt-0 mt-10 flex flex-col md:flex-row items-center justify-center gap-x-7">
         <img src="/map-flag.png" alt="Flag of Nigeria" />
-        <div className="mt-15 md:mt-0">
+        <div className="mt-15 md:mt-0 flex flex-col items-start">
           <p className="font-bold text-[2rem]">NFT Details</p>
-          <button className="text-white mt-5 mb-15 bg-home py-2 px-8 rounded-[6px]">
-            GO to Dashboard
-          </button>
-          <img
-            src="/nft-register.png"
-            className="rounded-[6px]"
-            alt="Flag of Nigeria"
-          />
-          <p className="mt-3 font-[Open Sans]">Civic ID #1234</p>
-          <p className="font-[Open Sans]">Token ID: 5678</p>
+          <Link to="/dashboard/home">
+            <button className="text-white mt-5 mb-15 bg-home py-2 px-8 rounded-[6px] cursor-pointer">
+              Go to Dashboard
+            </button>
+          </Link>
+
+          <div className="relative inline-block">
+            <img src={pfp} className="rounded-[6px]" alt="profile picture" />
+            <div className="absolute top-0 left-0 bg-gray-500 text-white text-xs px-2 py-1 rounded-tl-[6px]">
+              {user.issueDate ? user.issueDate : "No Date"}
+            </div>
+          </div>
+          <p className="mt-3 font-[Open Sans]">Civic ID: #{user.id}</p>
+          {/* <p className="font-[Open Sans]">Token ID: 5678</p> */}
         </div>
       </section>
 
@@ -37,7 +47,7 @@ function NftIssuance() {
             <p>
               <span>🔑</span> wallet address
             </p>
-            <p>0x1234abcd</p>
+            <p>{user.walletAddress ? user.walletAddress : "...."}</p>
           </div>
         </div>
       </section>
