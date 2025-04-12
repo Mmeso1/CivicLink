@@ -10,6 +10,12 @@
   --color-yellow: rgba(236, 201, 75, 1);
   --color-red: rgba(245, 101, 101, 1);
   --color-gray: rgba(10, 9, 9, 0.5);
+  --color-gray-nft: rgba(178, 178, 178, 1);
+}
+
+button:hover {
+  background-color: green;
+  color: white;
 }
 
 .open-sans {

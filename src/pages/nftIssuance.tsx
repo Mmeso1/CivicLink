@@ -1,15 +1,124 @@
 import userStore from "../store/userStore";
 import { Link } from "react-router-dom";
 import pfp from "../assets/images/placeholder.png";
+import { useState } from "react";
+import { FaArrowLeft, FaBars, FaSearch } from "react-icons/fa";
 
 function NftIssuance() {
+  const [toggle, setToggle] = useState(false);
+
+  const handleToggle = () => {
+    setToggle((prevState) => !prevState);
+  };
   const user = userStore();
 
   return (
     <section className="font-[Roboto]">
-      <header className="h-[80px] container mx-auto flex items-center ">
-        <p>⚫</p>
-        <p className="ml-3 text-[28px] font-[500]">NFT Issuance</p>
+      <header className="h-[100px] justify-between px-6 hidden container mx-auto md:flex items-center ">
+        {/* Header for large screens */}
+        <div className="flex items-center">
+          <p>⚫</p>
+          <p className="ml-3 text-[28px] font-[500]">NFT Issuance</p>
+        </div>
+        <div className="text-home">
+          <ul className="flex gap-8">
+            <li>
+              <Link className="hover:font-bold hover:text-gray-nft" to="">
+                Account
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:font-bold hover:text-gray-nft" to="">
+                Dashboard
+              </Link>
+            </li>
+
+            <li>
+              <Link className="hover:font-bold hover:text-gray-nft" to="">
+                Activity
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:font-bold hover:text-gray-nft" to="">
+                Settings
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+      {toggle && (
+        // Small screen menu
+        <div className="w-[370px] font-[Open Sans] md:hidden bg-home text-white absolute h-[900px] rounded-br-3xl z-50">
+          <p
+            onClick={handleToggle}
+            className=" cursor-pointer text-5xl absolute top-5 right-5"
+          >
+            X
+          </p>
+          <ul className="flex flex-col ml-24 text-2xl gap-[60px]">
+            <li className="mt-10">
+              <h1 className="text-[2rem]">
+                <span className="text-green-300">Civic</span>Link
+              </h1>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Account
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                My Civic Identity
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Activity
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Settings
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Volunteer
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Help Center
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
+
+      <header className="h-[100px] flex justify-around container  items-center md:hidden">
+        {/* Header for small to medium screens */}
+
+        <FaBars
+          onClick={handleToggle}
+          className="text-3xl hover:text-home cursor-pointer text-gray-nft"
+        />
+
+        <FaArrowLeft className="text-3xl hover:text-home cursor-pointer text-gray-nft" />
+
+        <p className="font-bold text-[2rem]">NFT Issuance</p>
+
+        <FaSearch className="text-3xl hover:text-home cursor-pointer text-gray-nft" />
+        <img
+          src="/user image.png"
+          className="rounded-full h-15"
+          alt="user image"
+        />
       </header>
 
       <section className="bg-home text-white h-[218px] flex flex-col items-center gap-[60px] justify-center">
