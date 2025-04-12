@@ -117,6 +117,19 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
             ))
           )}
         </div>
+
+        <div className="absolute bottom-7 left-1/2 transform -translate-x-1/2 text-center text-gray-600 text-sm w-[400px]">
+          <p>
+            By connecting your wallet and using CivicLink, you agree to our {""}
+            <a href="#" className="text-[#005C37] underline">
+              Terms of Service
+            </a>{" "}
+            and{" "}
+            <a href="#" className="text-[#005C37] underline">
+              Privacy Policy
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -60,13 +60,13 @@ const ConnectWithMetaMask = () => {
 
   return (
     showSuccessModal && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="fixed inset-0  bg-white flex items-center justify-center z-50">
         <div className="bg-white p-8 rounded-xl w-96 text-center">
-          <h2 className="text-2xl font-semibold mb-2">Wallet Connected!</h2>
-          <p className="mb-6 text-gray-700">You're in 🎉</p>
+          <h2 className="text-3xl font-semibold mb-2">Wallet Connected!</h2>
+          <p className="mt-6 mb-16 text-gray-700">You're in! 🎉</p>
           <button
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-            onClick={() => navigate("/dashboard")}
+            className="bg-[#005C37] text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer"
+            onClick={() => navigate("/dashboard/home")}
           >
             Continue to Dashboard
           </button>
