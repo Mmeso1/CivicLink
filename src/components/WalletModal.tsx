@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSyncProviders } from "../hooks/useSyncProviders";
 import { ClipLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
+import { useWalletStore } from "../store/walletStore";
 // import { formatAddress } from "../utils/index";
 
 interface WalletModalProps {
@@ -13,6 +15,8 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
   const [userAccount, setUserAccount] = useState<string>("");
   const providers = useSyncProviders();
 
+  const navigate = useNavigate();
+
   const [isSearching, setIsSearching] = useState(true);
   const [noProviderFound, setNoProviderFound] = useState(false);
 
@@ -24,6 +28,12 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
       })) as string[];
       setSelectedWallet(providerWithInfo);
       setUserAccount(accounts?.[0]);
+
+      if (userAccount) {
+        // console.log("User account:", userAccount);
+        useWalletStore.getState().setWallet(userAccount, providerWithInfo);
+        navigate("/connect-with-metamask");
+      }
     } catch (error) {
       console.error(error);
     }
