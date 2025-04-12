@@ -2,30 +2,101 @@ import { FaBars, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import LatestUpdates from "../components/latestUpdates";
 
+import { BiDownArrow } from "react-icons/bi";
+import { useState } from "react";
+
 function HomePage() {
+  const [toggle, setToggle] = useState<boolean>(false);
+
+  const handleToggle = () => {
+    setToggle((prevState) => !prevState);
+  };
+
   return (
     <section className="bg-white font-[Open Sans]">
+      {toggle && (
+        <div className="w-[300px] lg:hidden bg-home text-white absolute h-screen z-50">
+          <p
+            onClick={handleToggle}
+            className="font-[cursive] cursor-pointer text-5xl absolute top-5 right-10"
+          >
+            X
+          </p>
+          <ul className="flex flex-col items-center text-2xl gap-[60px] font-[700] ">
+            <li className="mt-30">
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Officials
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+                Complaints
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
       <header className="bg-home text-white h-[80px] flex items-center justify-center">
         <div className="w-[80%] flex justify-between items-center">
-          <h1 className="text-[2rem] font-[700]">
+          <h1 className="text-[2rem] font-[700] ml-28 lg:ml-0">
             <span className="text-green-300">Civic</span>Link
           </h1>
           <nav className="lg:flex hidden justify-between gap-[40px] items-center">
             <ul className="flex gap-[40px] font-[700] ">
               <li>
-                <Link to="#">Home</Link>
+                <Link
+                  className="hover:cursor-pointer hover:text-gray-500"
+                  to="#"
+                >
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="#">About</Link>
+                <Link
+                  className="hover:cursor-pointer hover:text-gray-500"
+                  to="#"
+                >
+                  About
+                </Link>
               </li>
               <li>
-                <Link to="#">Services</Link>
+                <Link
+                  className="hover:cursor-pointer hover:text-gray-500"
+                  to="#"
+                >
+                  Services
+                </Link>
               </li>
               <li>
-                <Link to="#">Officials</Link>
+                <Link
+                  className="hover:cursor-pointer hover:text-gray-500"
+                  to="#"
+                >
+                  Officials
+                </Link>
               </li>
               <li>
-                <Link to="#">Complaints</Link>
+                <Link
+                  className="hover:cursor-pointer hover:text-gray-500"
+                  to="#"
+                >
+                  Complaints
+                </Link>
               </li>
             </ul>
             <div className=" w-[220px] flex justify-center border-[1px] border-search rounded-[6px] p-[8px] items-center">
@@ -43,8 +114,24 @@ function HomePage() {
             </div>
           </nav>
         </div>
-        <div className="lg:hidden text-4xl absolute right-10">
-          <FaBars />
+        <div className="lg:hidden text-4xl absolute left-10">
+          <FaBars className="cursor-pointer" onClick={handleToggle} />
+        </div>
+
+        <div className="flex items-center lg:hidden justify-evenly w-[300px]">
+          <p className="text-3xl">
+            <FaSearch />
+          </p>
+          <div className="flex items-center">
+            <img
+              className="rounded-full mr-3"
+              src="/public/user image.png"
+              alt="Image of the user"
+            />
+            <p className="text-3xl">
+              <BiDownArrow />
+            </p>
+          </div>
         </div>
       </header>
 
@@ -118,19 +205,44 @@ function HomePage() {
 
           <ul className="flex justify-between text-[1.1rem]">
             <li>
-              <Link to="#">English</Link>
+              <Link
+                className="hover:text-home hover:cursor-pointer hover:font-bold"
+                to="#"
+              >
+                English
+              </Link>
             </li>
             <li>
-              <Link to="#">Yoruba</Link>
+              <Link
+                className="hover:text-home hover:cursor-pointer hover:font-bold"
+                to="#"
+              >
+                Yoruba
+              </Link>
             </li>
             <li>
-              <Link to="#">Igbo</Link>
+              <Link
+                className="hover:text-home hover:cursor-pointer hover:font-bold"
+                to="#"
+              >
+                Igbo
+              </Link>
             </li>
             <li>
-              <Link to="#">Hausa</Link>
+              <Link
+                className="hover:text-home hover:cursor-pointer hover:font-bold"
+                to="#"
+              >
+                Hausa
+              </Link>
             </li>
             <li>
-              <Link to="#">Other</Link>
+              <Link
+                className="hover:text-home hover:cursor-pointer hover:font-bold"
+                to="#"
+              >
+                Other
+              </Link>
             </li>
           </ul>
         </div>
@@ -138,9 +250,24 @@ function HomePage() {
 
       <section className="mt-30 pb-10">
         <div className="flex flex-col md:flex-row mx-auto w-2/3 items-center justify-between gap-[60px] md:gap-0">
-          <p>© 2025 CivicLink. All rights reserved.</p>
-          <p>Privacy Policy</p>
-          <p>Terms of Service</p>
+          <Link
+            className="hover:text-home hover:cursor-pointer hover:font-bold"
+            to=""
+          >
+            © 2025 CivicLink. All rights reserved.
+          </Link>
+          <Link
+            className="hover:text-home hover:cursor-pointer hover:font-bold"
+            to=""
+          >
+            Privacy Policy
+          </Link>
+          <Link
+            className="hover:text-home hover:cursor-pointer hover:font-bold"
+            to=""
+          >
+            Terms of Service
+          </Link>
         </div>
       </section>
     </section>
