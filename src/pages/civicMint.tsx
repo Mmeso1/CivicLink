@@ -1,4 +1,73 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import userStore from "../store/userStore";
+import { ClipLoader } from "react-spinners";
+
 function CivicIdMint() {
+  const navigate = useNavigate();
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    role: "select",
+    dateOfBirth: "",
+    state: "",
+    socialMediaHandle: "",
+  });
+  const [confirmed, setConfirmed] = useState(false);
+  const user = userStore();
+
+  // using useEffect to check if all fields are filled and confirmed
+  useEffect(() => {
+    const allFilled = Object.values(formData).every(
+      (value) => value.trim() !== "" && value !== "select"
+    );
+    setIsDisabled(!(allFilled && confirmed));
+  }, [formData, confirmed]);
+
+  // generate random id
+  const generateUserId = () => {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const randomLetters =
+      letters[Math.floor(Math.random() * 26)] +
+      letters[Math.floor(Math.random() * 26)];
+    const randomNumbers = Math.floor(1000 + Math.random() * 9000); // ensures 4 digits
+    return randomLetters + randomNumbers;
+  };
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await axios.post(
+        " https://civic-identityw3.onrender.com/api/v1/nftmint",
+        {
+          name: formData.fullName,
+          role: formData.role,
+        }
+      );
+
+      const generatedId = generateUserId();
+
+      user.handleMintingSuccess({
+        id: generatedId,
+        name: formData.fullName,
+        role: formData.role,
+        recipient: response.data.recipient,
+        issueDate: response.data.issueDate,
+        transactionHash: response.data.transactionHash,
+      });
+
+      // console.log(response.data);
+      navigate("/nftIssuance");
+    } catch (error) {
+      console.error("Error minting Civic ID:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       <section className="lg:mt-[30vh] mt-[10vh] mx-auto ">
@@ -17,21 +86,50 @@ function CivicIdMint() {
           <input
             className="border-[1px] w-full lg:w-[598px] px-4 rounded-[6px] py-1 border-gray-300 my-1"
             type="text"
+            id="fullname"
             placeholder="Enter your full legal name"
-            id=""
+            value={formData.fullName}
+            onChange={(e) =>
+              setFormData({ ...formData, fullName: e.target.value })
+            }
           />
           <p className="text-[0.6rem] text-gray">
             Please ensure to enter your full legal name as per official
             documents.
           </p>
         </div>
+        <div className="lg:mt-[10vh] mt-[5vh]">
+          <p className="font-bold text-[1.2rem]">Role</p>
+
+          <select
+            className="border border-gray-300 w-full lg:w-[598px] px-4 py-2 rounded-[6px] my-1 text-gray-700"
+            id="role"
+            value={formData.role}
+            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+          >
+            <option value="select" disabled className="text-gray-200">
+              Select
+            </option>
+            <option value="civilian">Civilian</option>
+          </select>
+
+          <p className="text-[0.6rem] text-gray">
+            Please ensure you select the role that best represents your status.
+            This cannot be changed later.
+          </p>
+        </div>
+
         <div className="mt-[5vh]">
           <p className="font-bold text-[1.2rem]">Date of Birth</p>
           <input
             className="border-[1px] w-full lg:w-[598px] px-4 rounded-[6px] py-1 border-gray-300 my-1"
             type="date"
+            id="dateOfBirth"
             placeholder="Select your date of birth"
-            id=""
+            value={formData.dateOfBirth}
+            onChange={(e) =>
+              setFormData({ ...formData, dateOfBirth: e.target.value })
+            }
           />
           <p className="text-[0.6rem] text-gray">
             Select your accurate date of birth for verification purposes.
@@ -42,8 +140,12 @@ function CivicIdMint() {
           <input
             className="border-[1px] w-full lg:w-[598px] px-4 rounded-[6px] py-1 border-gray-300 my-1"
             type="text"
+            id="state"
             placeholder="Enter your state</State>"
-            id=""
+            value={formData.state}
+            onChange={(e) =>
+              setFormData({ ...formData, state: e.target.value })
+            }
           />
           <p className="text-[0.6rem] text-gray">Enter your state of birth.</p>
         </div>
@@ -52,22 +154,35 @@ function CivicIdMint() {
           <input
             className="border-[1px] w-full lg:w-[598px] px-4 rounded-[6px] py-1 border-gray-300 my-1"
             type="text"
+            id="socialMediaHandle"
             placeholder="@yourhandle</State>"
-            id=""
+            value={formData.socialMediaHandle}
+            onChange={(e) =>
+              setFormData({ ...formData, socialMediaHandle: e.target.value })
+            }
           />
         </div>
         <div className="mt-[3vh]">
           <label>
-            <input className="md:ml-10 ml-0" type="checkbox" /> I confirm that
-            the information above is accurate.
+            <input
+              className="md:ml-10 ml-0"
+              type="checkbox"
+              checked={confirmed}
+              onChange={(e) => setConfirmed(e.target.checked)}
+            />{" "}
+            I confirm that the information above is accurate.
           </label>
         </div>
 
-        <div>
-          <button className="bg-home text-white my-[10vh] rounded-sm px-15 py-1">
-            Mint Civic ID
-          </button>
-        </div>
+        <button
+          className={`my-[10vh] rounded-sm px-15 py-1 text-white ${
+            isDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-home"
+          }`}
+          disabled={isDisabled}
+          onClick={handleSubmit}
+        >
+          {isLoading ? <ClipLoader color="#fff" size={20} /> : "Mint Civic ID"}
+        </button>
       </section>
 
       <section className="lg:w-[90%] w-full px-6 mx-auto">
