@@ -132,7 +132,7 @@ function NftIssuance() {
         <img src="/map-flag.png" alt="Flag of Nigeria" />
         <div className="mt-15 md:mt-0 flex flex-col items-start">
           <p className="font-bold text-[2rem]">NFT Details</p>
-          <Link to="/dashboard/home">
+          <Link to="/dashboard">
             <button className="text-white mt-5 mb-15 bg-home py-2 px-8 rounded-[6px] cursor-pointer">
               Go to Dashboard
             </button>

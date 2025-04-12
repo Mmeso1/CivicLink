@@ -85,20 +85,28 @@ const MintLayout = () => {
           <li className="list-none text-[0.8rem] mt-10">
             <Link
               className="hover:cursor-pointer hover:text-gray-500"
-              to="/dashboard/home"
+              to="/dashboard/"
             >
               Dashboard
             </Link>
           </li>
           <li className="list-none text-[0.8rem] mt-10">
-            <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+            <Link
+              className="hover:cursor-pointer hover:text-gray-500"
+              to="/nftIssuance"
+            >
               My Civic Identity
             </Link>
           </li>
           <li className="list-none text-[0.8rem] mt-10">
-            <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
+            <a
+              className="hover:cursor-pointer hover:text-gray-500"
+              href="https://civicapp-s-git-main-orumade-destinys-projects.vercel.app/find-your-rep"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Activity
-            </Link>
+            </a>
           </li>
           <li className="list-none text-[0.8rem] mt-10">
             <Link className="hover:cursor-pointer hover:text-gray-500" to="#">
