@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { FaBars, FaSearch } from "react-icons/fa";
+import { FaArrowCircleDown, FaBars, FaSearch } from "react-icons/fa";
 
 const NavBar = () => {
   return (
     <>
-      <header className="bg-white text-white h-[80px] flex items-center justify-center">
+      <header className="border-b-[1.5px] border-b-gray-300 bg-white text-white h-[100px] flex items-center justify-center">
         <div className="w-[80%] flex justify-between items-center">
-          <h1 className="text-[2rem] font-[700] open-sans text-black">
+          <h1 className="text-[2rem] hidden lg:block font-[700] open-sans text-black">
             CivicLink
           </h1>
           <nav className="lg:flex hidden justify-between gap-[40px] items-center text-black">
@@ -34,8 +34,24 @@ const NavBar = () => {
             </div>
           </nav>
         </div>
-        <div className="lg:hidden text-4xl absolute right-10">
-          <FaBars />
+        <div className="lg:hidden px-6 absolute items-center justify-between left-0 w-full flex text-gray-nft text-4xl">
+          <div className="flex gap-10">
+            <FaBars />
+            <h1 className="text-[2rem] font-[700] open-sans text-black">
+              CivicLink
+            </h1>
+          </div>
+          <div className="flex w-[150px] justify-between items-center">
+            <FaSearch />
+            <div className="flex items-center">
+              <img
+                src="/female user.png"
+                className="w-[50px] h-[50px]"
+                alt="Image of a user"
+              />
+              <FaArrowCircleDown className="ml-3 text-base" />
+            </div>
+          </div>
         </div>
       </header>
     </>
